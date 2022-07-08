@@ -17,7 +17,7 @@
    <br /> 
    <button type="submit" class="btn btn-success btn-lg btn-block" id="magic">解析！</button>
    <br /> 
-   <div id="str"></div> 
+   <div id="result" class="jumbotron" style="display:none;"></div> 
   </div> 
   <script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script> 
   <script src="https://lib.baomitu.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> 
@@ -25,6 +25,7 @@
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script> 
   <script type="text/javascript">
     $(document).ready(function () {
+	    document.getElementById("result").style.display="none";
 	    $(document).keyup(function(event){
 		  if(event.keyCode == 13){
 			$('#magic').trigger('click');
@@ -39,13 +40,16 @@
                 url: "/api/" + $.trim($("#channel").val()),
                 dataType: "json",
                 success: function (data) {
-                        layer.closeAll('loading');                        
-                        var oDiv = document.getElementById('str');
-                        oDiv.innerHTML = '<center><a role="button" rel="noreferrer" class="btn btn-success btn-sm"  data-clipboard-text="' + data.url + '">点击复制直播流地址</a></center></br><center><a role="button" rel="noreferrer" class="btn btn-success btn-sm" target="_blank"  href="potplayer://' + data.url + '">使用PotPlayer播放</a></center>';
+                        layer.closeAll('loading');
+						var channelUrl = "https://www.twitch.tv/" + $.trim($("#channel").val());
+						document.getElementById("result").style.display="block";
+                        var oDiv = document.getElementById('result');
+                        oDiv.innerHTML = '<center><p>直播间地址：<a target="_blank" href="' + channelUrl + '">' + channelUrl + '</a></p></center></br><center><a role="button" rel="noreferrer" class="btn btn-success btn-lg btn-block"  data-clipboard-text="' + data.url + '">点击复制直播流地址</a></center></br><center><a role="button" rel="noreferrer" class="btn btn-success btn-lg btn-block" target="_blank"  href="potplayer://' + data.url + '">使用PotPlayer播放</a></center>';
                     },
                     error: function (error) {
                         layer.closeAll('loading');
                         layer.msg('出错了，请再试一下！');
+						document.getElementById("result").style.display="none";
                    }
             });
         });
