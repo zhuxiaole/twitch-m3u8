@@ -6,12 +6,10 @@ import (
 )
 func main() {
     router := gin.Default()
+	router.LoadHTMLFiles("index.html")
 	router.GET("/", func(c *gin.Context) {
-        router.LoadHTMLFiles("index.html")
-		router.GET("/", func(c *gin.Context) {
-			c.HTML(http.StatusOK, "index.html", "")
-		})
-    })
+		c.HTML(http.StatusOK, "index.html", "")
+	})
 	router.GET("/api/:id", func(c *gin.Context) {
 		pl, err := twitchpl.Get(c.Param("id"))
 		if err != nil {
