@@ -9,7 +9,7 @@ func main() {
 	router.GET("/", func(c *gin.Context) {
         r.LoadHTMLFiles("index.html")
 		r.GET("/", func(c *gin.Context) {
-			c.HTML(http.StatusOK, "index.html")
+			c.HTML(http.StatusOK, "index.html", "")
 		})
     })
 	router.GET("/api/:id", func(c *gin.Context) {
