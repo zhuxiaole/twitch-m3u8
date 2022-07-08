@@ -7,8 +7,8 @@ import (
 func main() {
     router := gin.Default()
 	router.GET("/", func(c *gin.Context) {
-        r.LoadHTMLFiles("index.html")
-		r.GET("/", func(c *gin.Context) {
+        router.LoadHTMLFiles("index.html")
+		router.GET("/", func(c *gin.Context) {
 			c.HTML(http.StatusOK, "index.html", "")
 		})
     })
