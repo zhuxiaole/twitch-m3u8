@@ -4,14 +4,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" /> 
   <link href="https://lib.baomitu.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
   <link href="https://lib.baomitu.com/bootstrap-table/1.12.1/bootstrap-table.min.css" rel="stylesheet" /> 
-  <title>解析twitch直播流地址</title> 
+  <title>解析老鼠台直播流地址</title> 
   <meta name="keywords" content="twitch,老鼠台,twitch解析,老鼠台解析" /> 
   <meta name="description" content="在线解析twitch直播流地址" /> 
  </head> 
  <body> 
   <div class="container"> 
    <div class="jumbotron"> 
-    <p>解析twitch直播流地址</p> 
+    <p>解析老鼠台直播流地址</p> 
    </div> 
    <input class="form-control" type="text" id="channel" placeholder="输入twitch频道id     比如：https://www.twitch.tv/playapex     输入playapex即可" />
    <br /> 
@@ -41,10 +41,10 @@
                 dataType: "json",
                 success: function (data) {
                         layer.closeAll('loading');
-						var channelUrl = "https://www.twitch.tv/" + $.trim($("#channel").val());
+						var channelId = $.trim($("#channel").val());
 						document.getElementById("result").style.display="block";
                         var oDiv = document.getElementById('result');
-                        oDiv.innerHTML = '<center><p>直播间地址：<a target="_blank" href="' + channelUrl + '">' + channelUrl + '</a></p></center></br><center><a role="button" rel="noreferrer" class="btn btn-success btn-lg btn-block"  data-clipboard-text="' + data.url + '">点击复制直播流地址</a></center></br><center><a role="button" rel="noreferrer" class="btn btn-success btn-lg btn-block" href="potplayer://' + data.url + '">使用PotPlayer播放</a></center>';
+                        oDiv.innerHTML = '<center><p>直播间频道：' + channelId + '</a></p></center></br><center><a role="button" rel="noreferrer" class="btn btn-success btn-lg btn-block"  data-clipboard-text="' + data.url + '">点击复制直播流地址</a></center></br><center><a role="button" rel="noreferrer" class="btn btn-success btn-lg btn-block" href="potplayer://' + data.url + '">使用PotPlayer播放</a></center>';
                     },
                     error: function (error) {
                         layer.closeAll('loading');
