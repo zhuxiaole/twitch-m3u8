@@ -44,7 +44,7 @@
 						var channelUrl = "https://www.twitch.tv/" + $.trim($("#channel").val());
 						document.getElementById("result").style.display="block";
                         var oDiv = document.getElementById('result');
-                        oDiv.innerHTML = '<center><p>直播间地址：<a target="_blank" href="' + channelUrl + '">' + channelUrl + '</a></p></center></br><center><a role="button" rel="noreferrer" class="btn btn-success btn-lg btn-block"  data-clipboard-text="' + data.url + '">点击复制直播流地址</a></center></br><center><a role="button" rel="noreferrer" class="btn btn-success btn-lg btn-block" target="_blank"  href="potplayer://' + data.url + '">使用PotPlayer播放</a></center>';
+                        oDiv.innerHTML = '<center><p>直播间地址：<a target="_blank" href="' + channelUrl + '">' + channelUrl + '</a></p></center></br><center><a role="button" rel="noreferrer" class="btn btn-success btn-lg btn-block"  data-clipboard-text="' + data.url + '">点击复制直播流地址</a></center></br><center><a role="button" rel="noreferrer" class="btn btn-success btn-lg btn-block" href="potplayer://' + data.url + '">使用PotPlayer播放</a></center>';
                     },
                     error: function (error) {
                         layer.closeAll('loading');
