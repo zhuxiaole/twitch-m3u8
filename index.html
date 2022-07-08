@@ -25,6 +25,11 @@
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script> 
   <script type="text/javascript">
     $(document).ready(function () {
+	    $(document).keyup(function(event){
+		  if(event.keyCode == 13){
+			$('#magic').trigger('click');
+		  }
+		});
         $('#magic').click(function () {
             layer.load(1, {
                 shade: [0.1, '#fff']
