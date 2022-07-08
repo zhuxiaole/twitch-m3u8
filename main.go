@@ -11,7 +11,7 @@ func main() {
             "message": "running",
         })
     })
-	router.GET("/twitch/:id", func(c *gin.Context) {
+	router.GET("/api/:id", func(c *gin.Context) {
 		pl, err := twitchpl.Get(c.Param("id"))
 		if err != nil {
 			c.JSON(http.StatusOK, gin.H{
