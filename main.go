@@ -7,9 +7,10 @@ import (
 func main() {
     router := gin.Default()
 	router.GET("/", func(c *gin.Context) {
-        c.JSON(http.StatusOK, gin.H{
-            "message": "running",
-        })
+        r.LoadHTMLFiles("index.html")
+		r.GET("/", func(c *gin.Context) {
+			c.HTML(http.StatusOK, "index.html")
+		})
     })
 	router.GET("/api/:id", func(c *gin.Context) {
 		pl, err := twitchpl.Get(c.Param("id"))
